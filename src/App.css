@@ -2,38 +2,51 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weather-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.location {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  min-height: 100vh;
+.temperature {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+}
+
+.condition {
+  font-size: 18px;
+  color: #555;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin-top: 10px;
+}
+
+.details {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-around;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.detail {
+  flex: 1;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.detail strong {
+  display: block;
+  font-size: 18px;
+  color: #333;
 }
