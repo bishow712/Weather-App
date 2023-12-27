@@ -2,12 +2,22 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import weatherService from './weatherService'
 
 const initialState = {
+    yourWeatherInfo: [],
     weatherInfo: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: '',
 }
+
+export const fetchYourInfo = createAsyncThunk('weather/yourInfo', async (location, thunkAPI)=>{
+    try {
+        return await weatherService.fetchYourData(location)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 export const fetchInfo = createAsyncThunk('weather/info', async (thunkAPI)=>{
     try {
@@ -40,6 +50,20 @@ export const weatherSlice = createSlice({
                 state.isError=true
                 state.message = action.payload
             })
+            .addCase(fetchYourInfo.pending, (state)=>{
+                state.isLoading = true
+           })
+           .addCase(fetchYourInfo.fulfilled, (state, action) => {
+               state.isLoading = false
+               state.isSuccess = true
+               state.isError=false
+               state.yourWeatherInfo = action.payload
+           })
+           .addCase(fetchYourInfo.rejected, (state,action)=>{
+               state.isLoading=false
+               state.isError=true
+               state.message = action.payload
+           })
     }
 })
 

@@ -11,27 +11,24 @@ function Body() {
     return state.weather
   })
 
-  if(weatherInfo.length === 0){
-    // console.log("Inside IF")
-    dispatch(fetchInfo())
-  };
-
-  // useEffect(() => {
-  //   console.log('useEffect Inside')
+  // if(weatherInfo.length === 0){
+  //   // console.log("Inside IF")
   //   dispatch(fetchInfo())
-  // }, [dispatch]);
+  // };
+
+  useEffect(() => {
+    // console.log('useEffect Inside')
+    dispatch(fetchInfo())
+  }, [dispatch]);
 
   // useEffect(() => {
-
   //   console.log('Inside useEffect')
   //   // Check if the component is mounted (not necessary for the initial mount)
   //   let isMounted = true;
-
   //   // Run the effect only on the initial mount or when the page is refreshed
   //   if (isMounted) {
   //     dispatch(fetchInfo());
   //   }
-
   //   // Set isMounted to false when the component is unmounted
   //   return () => {
   //     isMounted = false;
